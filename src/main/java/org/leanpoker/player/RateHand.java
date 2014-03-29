@@ -1,5 +1,6 @@
 package org.leanpoker.player;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -7,6 +8,7 @@ import java.util.List;
  */
 public class RateHand {
 
+    private static List<HandRater> raters = new LinkedList<HandRater>();
 
     public static float rateHand(Hand hand) {
         List<Card> cards = hand.getCards();
@@ -14,7 +16,16 @@ public class RateHand {
         for (Card card : cards) {
               numRank += card.getRankInt();
         }
-        return numRank;
+
+        float raterRank = 0;
+
+        for (HandRater rater : raters) {
+            float thisRank = rater.rate(hand);
+            if (raterRank < thisRank) {
+                raterRank = thisRank;
+            }
+        }
+        return numRank + raterRank;
     }
 
     public static Rating rate(List<Card> ourCards, List<Card> communityCards) {
@@ -35,5 +46,9 @@ public class RateHand {
 
 
         return new Rating(fullRate/communityRate,   ourRate / communityRate);
+    }
+
+    public static void registerRater(HandRater handRater) {
+        raters.add(handRater);
     }
 }
