@@ -16,7 +16,7 @@ public class Player {
         Rating rating = RateHand.rate(jsonUtil.getOurCards(), jsonUtil.getCommunityCards());
 
 		try {
-            switch (PlayStrategy.play(currentHand)) {
+            switch (PlayStrategy.play(rating)) {
                 case FOLD:
                     return 0;
                 case CALL_BET:

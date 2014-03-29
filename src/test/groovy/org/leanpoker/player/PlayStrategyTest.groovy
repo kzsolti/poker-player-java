@@ -8,8 +8,8 @@ class PlayStrategyTest extends Specification {
 
 	def "playStrategy"() {
 		given:
-        Hand hand = new Hand();
-        def result = PlayStrategy.play(hand)
+		def rating = new Rating(1, 1)
+        def result = PlayStrategy.play(rating)
 
         expect:
         result in StrategyDecision.values()
