@@ -34,12 +34,12 @@ public abstract class HandRater {
 				sameRankCards.add(card);
 			}
 			for (Card other : hand.getCards()) {
-				if (!card.equals(other) && card.isEqualRank(other)) {
-					sameRankCards.add(card);
+				if (!card.equals(other) && card.isEqualRank(other) && !sameRankCards.contains(other)) {
+					sameRankCards.add(other);
 				}
 			}
+			rankCountMap.put(sameRankCards.get(0).getRank(), sameRankCards);
 		}
-		rankCountMap.put(sameRankCards.get(0).getRank(), sameRankCards);
 		return rankCountMap;
 	}
 }

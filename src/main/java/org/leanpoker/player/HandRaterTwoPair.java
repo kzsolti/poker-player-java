@@ -6,17 +6,17 @@ import java.util.Map;
 /**
  * Created by katona.zsolt on 2014.03.29..
  */
-public class OnePairRater extends HandRater {
+public class HandRaterTwoPair extends HandRater {
 
 	@Override
 	public float rate(Hand hand) {
+		int pairCount = 0;
 		Map<String, List<Card>> rankCounts = getRankCounts(hand);
 		for (Map.Entry<String, List<Card>> rankCount : rankCounts.entrySet()) {
 			if (rankCount.getValue().size() == 2) {
-				return ONE_PAIR;
+				pairCount++;
 			}
 		}
-		return 0;
+		return pairCount == 2 ? TWO_PAIRS : 0;
 	}
-
 }
