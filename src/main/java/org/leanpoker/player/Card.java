@@ -30,4 +30,24 @@ public class Card {
     public void setSuit(String suit) {
         this.suit = suit;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Card card = (Card) o;
+
+        if (rank != null ? !rank.equals(card.rank) : card.rank != null) return false;
+        if (suit != null ? !suit.equals(card.suit) : card.suit != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = rank != null ? rank.hashCode() : 0;
+        result = 31 * result + (suit != null ? suit.hashCode() : 0);
+        return result;
+    }
 }
