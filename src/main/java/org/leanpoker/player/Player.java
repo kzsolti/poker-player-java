@@ -16,13 +16,20 @@ public class Player {
 
 		try {
             switch (PlayStrategy.play(currentHand)) {
-                case 0:
+                case FOLD:
                     return 0;
-                case -1:
-                    return jsonUtil.getCurrentBuyIn() - jsonUtil.getOurBet();
-
+                case CALL_BET:
+                    return getMinimumBetAmount(jsonUtil);
+				case RAISE_SMALL:
+					return getMinimumBetAmount(jsonUtil) + jsonUtil.getMinimumRaise();
+				case RAISE:
+					return getMinimumBetAmount(jsonUtil) + jsonUtil.getMinimumRaise() * 2;
+				case RAISE_BIG:
+					return getMinimumBetAmount(jsonUtil) + jsonUtil.getMinimumRaise() * 3;
+				case ALL_IN:
+					return 0;
                 default:
-                    return jsonUtil.getCurrentBuyIn() - jsonUtil.getOurBet();
+                    return getMinimumBetAmount(jsonUtil);
             }
 
 		} catch (Exception e) {
@@ -30,6 +37,10 @@ public class Player {
 			e.printStackTrace();
 			return 0;
 		}
+	}
+
+	private static int getMinimumBetAmount(JsonUtil jsonUtil) {
+		return jsonUtil.getCurrentBuyIn() - jsonUtil.getOurBet();
 	}
 
     public static void showdown(JsonElement game) {
