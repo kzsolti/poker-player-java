@@ -4,22 +4,21 @@ package org.leanpoker.player;
  * Created by fulop on 2014.03.29..
  */
 public class Rating {
-    int handToDeskRatio;
-    int holeToDeskRatio;
+    float handToDeskRatio;
+    float holeToDeskRatio;
 
-    public int getHandToDeskRatio() {
+    public Rating(float handToDeskRatio, float holeToDeskRatio) {
+        this.handToDeskRatio = handToDeskRatio;
+        this.holeToDeskRatio = holeToDeskRatio;
+    }
+
+    public float getHandToDeskRatio() {
         return handToDeskRatio;
     }
 
-    public void setHandToDeskRatio(int handToDeskRatio) {
-        this.handToDeskRatio = handToDeskRatio;
-    }
 
-    public int getHoleToDeskRatio() {
+    public float getHoleToDeskRatio() {
         return holeToDeskRatio;
     }
 
-    public void setHoleToDeskRatio(int holeToDeskRatio) {
-        this.holeToDeskRatio = holeToDeskRatio;
-    }
 }
