@@ -11,11 +11,12 @@ public class RateHand {
     private static List<HandRater> raters = new LinkedList<HandRater>();
 
 	static {
-		raters.add( new HandRaterFlush());
-		raters.add( new HandRaterStraight());
-		raters.add( new HandRaterOnePair());
-		raters.add( new HandRaterThreeOfKind());
-		raters.add( new HandRaterTwoPair());
+		raters.add(new HandRaterFlush());
+		raters.add(new HandRaterStraight());
+		raters.add(new HandRaterOnePair());
+		raters.add(new HandRaterThreeOfKind());
+		raters.add(new HandRaterTwoPair());
+		raters.add(new HandRaterFullHouse());
 	}
 
     public static float rateHand(Hand hand) {
