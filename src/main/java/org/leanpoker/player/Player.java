@@ -9,12 +9,12 @@ public class Player {
     public static final String VERSION = "Korda Gyuri Bacsi pokerrobotja";
 
     public static int betRequest(JsonElement request) {
-		JsonUtil jsonUtil = new JsonUtil();
+		JsonUtil jsonUtil = new JsonUtil(request);
 		try {
 			if (Math.random() < 0.05) {
 				return 0;
 			} else {
-				return jsonUtil.getCurrentBuyIn(request) - jsonUtil.getOurBet(request);
+				return jsonUtil.getCurrentBuyIn() - jsonUtil.getOurBet();
 			}
 		} catch (Exception e) {
 			System.err.println(e.getMessage());

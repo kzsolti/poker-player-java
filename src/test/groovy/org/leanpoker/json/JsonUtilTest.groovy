@@ -10,37 +10,36 @@ import spock.lang.Specification
 class JsonUtilTest extends Specification {
 
 	def jsonUtil
-	def jsonElement
 
 	def setup() {
-		jsonUtil = new JsonUtil()
 		def jsonFile = new File('src/main/resources/json_test.json')
-		jsonElement = new JsonParser().parse(jsonFile.text);
+		def jsonElement = new JsonParser().parse(jsonFile.text);
+		jsonUtil = new JsonUtil(jsonElement)
 	}
 
 	def "get call amount test"() {
 		expect:
-		jsonUtil.getSmallBlind(jsonElement) == 10
+		jsonUtil.getSmallBlind() == 10
 	}
 
 	def "get current buy in test"() {
 		expect:
-		jsonUtil.getCurrentBuyIn(jsonElement) == 20
+		jsonUtil.getCurrentBuyIn() == 20
 	}
 
 	def "get our stats"() {
 		expect:
-		jsonUtil.getSelf(jsonElement) != null
+		jsonUtil.getSelf() != null
 	}
 
 	def "get our cards"() {
 		expect:
-		jsonUtil.getOurCards(jsonElement).size() == 2
+		jsonUtil.getOurCards().size() == 2
 	}
 
 	def "our card's contents"() {
 		given:
-		def cards = jsonUtil.getOurCards(jsonElement)
+		def cards = jsonUtil.getOurCards()
 
 		expect:
 		new Card(rank, suit) in cards
@@ -53,7 +52,7 @@ class JsonUtilTest extends Specification {
 
 	def "community card's contents"() {
 		given:
-		def cards = jsonUtil.getCommunityCards(jsonElement)
+		def cards = jsonUtil.getCommunityCards()
 
 		expect:
 		new Card(rank, suit) in cards
@@ -67,7 +66,7 @@ class JsonUtilTest extends Specification {
 
 	def "get our bet"() {
 		expect:
-		jsonUtil.getOurBet(jsonElement) == 10
+		jsonUtil.getOurBet() == 10
 	}
 
 }

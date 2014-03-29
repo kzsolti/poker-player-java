@@ -15,19 +15,25 @@ import org.leanpoker.player.Player;
  */
 public class JsonUtil {
 
-	public int getSmallBlind(JsonElement gameState) {
+	private JsonElement gameState;
+
+	public JsonUtil(JsonElement gameState) {
+		this.gameState = gameState;
+	}
+
+	public int getSmallBlind() {
 		return getInt(gameState, "small_blind");
 	}
 
-	public int getCurrentBuyIn(JsonElement gameState) {
+	public int getCurrentBuyIn() {
 		return getInt(gameState, "current_buy_in");
 	}
 
-	public int getOurBet(JsonElement jsonElement) {
-		return getInt(getSelf(jsonElement), "bet");
+	public int getOurBet() {
+		return getInt(getSelf(), "bet");
 	}
 
-	public JsonObject getSelf(JsonElement gameState) {
+	public JsonObject getSelf() {
 		JsonArray players = getChildElement(gameState, "players").getAsJsonArray();
 		for (JsonElement player : players) {
 			if (Player.VERSION.equals(getString(player, "version"))) {
@@ -37,9 +43,9 @@ public class JsonUtil {
 		return null;
 	}
 
-	public List<Card> getOurCards(JsonElement gameState) {
+	public List<Card> getOurCards() {
 		List<Card> cards = new ArrayList<>();
-		JsonObject self = getSelf(gameState);
+		JsonObject self = getSelf();
 		JsonArray holeCards = getChildElement(self, "hole_cards").getAsJsonArray();
 		for (JsonElement jsonCard : holeCards) {
 			cards.add(new Card(getString(jsonCard, "rank"), getString(jsonCard, "suit")));
@@ -47,7 +53,7 @@ public class JsonUtil {
 		return cards;
 	}
 
-	public List<Card> getCommunityCards(JsonElement gameState) {
+	public List<Card> getCommunityCards() {
 		List<Card> cards = new ArrayList<>();
 		JsonArray holeCards = getChildElement(gameState, "community_cards").getAsJsonArray();
 		for (JsonElement jsonCard : holeCards) {
