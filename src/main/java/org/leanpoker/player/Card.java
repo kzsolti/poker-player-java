@@ -15,6 +15,29 @@ public class Card {
         this.suit = suit;
     }
 
+    public int getRankInt() {
+        if (rank.equals("J")) {
+            return 11;
+        } else if (rank.equals("Q")) {
+            return 12;
+        } else if (rank.equals("K")) {
+            return (13);
+        } else if (rank.equals("A")) {
+            return 14;
+        } else {
+            int ret = 0;
+            try {
+                ret =
+                        Integer.parseInt(rank);
+            } catch (Exception e) {
+                return 0;
+            } finally {
+                return ret;
+            }
+        }
+
+    }
+
     public String getRank() {
         return rank;
     }
@@ -50,4 +73,12 @@ public class Card {
         result = 31 * result + (suit != null ? suit.hashCode() : 0);
         return result;
     }
+
+	public boolean isEqualRank(Card other) {
+		return this.rank.equals(other.rank);
+	}
+
+	public boolean isEqualSuit(Card other) {
+		return this.suit.equals(other.suit);
+	}
 }

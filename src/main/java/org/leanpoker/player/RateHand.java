@@ -1,5 +1,6 @@
 package org.leanpoker.player;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -7,10 +8,43 @@ import java.util.List;
  */
 public class RateHand {
 
+    private static List<HandRater> raters = new LinkedList<HandRater>();
 
+	static {
+		raters.add(new HandRaterFlush());
+		raters.add(new HandRaterStraight());
+		raters.add(new HandRaterOnePair());
+		raters.add(new HandRaterThreeOfKind());
+		raters.add(new HandRaterTwoPair());
+		raters.add(new HandRaterFullHouse());
+		raters.add(new HandRaterFourOfKind());
+	}
 
     public static float rateHand(Hand hand) {
-        return 1;
+        List<Card> cards = hand.getCards();
+
+        if (hand == null || hand.getCards().isEmpty()) {
+            return 1;
+        }
+
+
+        int numRank = 0;
+        for (Card card : cards) {
+              numRank += card.getRankInt();
+        }
+
+        float raterRank = 0;
+
+        for (HandRater rater : raters) {
+            float thisRank = rater.rate(hand);
+            if (raterRank < thisRank) {
+                raterRank = thisRank;
+            }
+            System.out.println("thisRank:" + thisRank);
+            System.out.println("raterRank:" + raterRank);
+        }
+        System.out.println("rank: " + (numRank + raterRank));
+        return numRank + raterRank;
     }
 
     public static Rating rate(List<Card> ourCards, List<Card> communityCards) {
@@ -32,4 +66,5 @@ public class RateHand {
 
         return new Rating(fullRate/communityRate,   ourRate / communityRate);
     }
+
 }

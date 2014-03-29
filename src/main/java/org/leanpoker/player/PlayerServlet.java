@@ -2,12 +2,13 @@ package org.leanpoker.player;
 
 import com.google.gson.JsonParser;
 
+import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 @WebServlet("/")
 public class PlayerServlet extends HttpServlet {
@@ -34,4 +35,5 @@ public class PlayerServlet extends HttpServlet {
             resp.getWriter().print(Player.VERSION);
         }
     }
+
 }
