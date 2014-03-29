@@ -1,6 +1,7 @@
 package org.leanpoker.json
 
 import com.google.gson.JsonParser
+import org.leanpoker.player.Card
 import spock.lang.Specification
 
 /**
@@ -39,7 +40,29 @@ class JsonUtilTest extends Specification {
 
 	def "our card's contents"() {
 		given:
-		jsonUtil.getOurCards(jsonElement)
+		def cards = jsonUtil.getOurCards(jsonElement)
+
+		expect:
+		new Card(rank, suit) in cards
+
+		where:
+		rank | suit
+		'9'  | 'diamonds'
+		'5'  | 'hearts'
+	}
+
+	def "community card's contents"() {
+		given:
+		def cards = jsonUtil.getCommunityCards(jsonElement)
+
+		expect:
+		new Card(rank, suit) in cards
+
+		where:
+		rank | suit
+		'8'  | 'diamonds'
+		'3'  | 'clubs'
+		'K'  | 'spades'
 	}
 
 }

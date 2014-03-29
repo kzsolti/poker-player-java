@@ -43,6 +43,15 @@ public class JsonUtil {
 		return cards;
 	}
 
+	public List<Card> getCommunityCards(JsonElement gameState) {
+		List<Card> cards = new ArrayList<>();
+		JsonArray holeCards = getChildElement(gameState, "community_cards").getAsJsonArray();
+		for (JsonElement jsonCard : holeCards) {
+			cards.add(new Card(getString(jsonCard, "rank"), getString(jsonCard, "suit")));
+		}
+		return cards;
+	}
+
 	private JsonElement getChildElement(JsonElement jsonElement, String key) {
 		return jsonElement.getAsJsonObject().get(key);
 	}
