@@ -13,7 +13,7 @@ public class OnePairRater extends HandRater {
 		Map<String, List<Card>> rankCounts = getRankCounts(hand);
 		for (Map.Entry<String, List<Card>> rankCount : rankCounts.entrySet()) {
 			if (rankCount.getValue().size() == 2) {
-				return 200;
+				return ONE_PAIR;
 			}
 		}
 		return 0;
