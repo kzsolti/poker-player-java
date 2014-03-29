@@ -45,7 +45,20 @@
 	"small_blind": 10,
 	"orbits": 0,
 	"dealer": 2,
-	"community_cards": [],
+	"community_cards": [
+		{
+			"rank": "8",
+			"suit": "diamonds"
+		},
+		{
+			"rank": "3",
+			"suit": "clubs"
+		},
+		{
+			"rank": "K",
+			"suit": "spades"
+		}
+	],
 	"current_buy_in": 20,
 	"pot": 70,
 	"in_action": 3,
