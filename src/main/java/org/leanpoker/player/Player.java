@@ -4,7 +4,7 @@ import com.google.gson.JsonElement;
 
 public class Player {
 
-    static final String VERSION = "Korda Gyuri Bácsi pókerrobotja";
+    static final String VERSION = "Korda Gyuri Bacsi pokerrobotja";
 
     public static int betRequest(JsonElement request) {
         return 0;
