@@ -25,7 +25,7 @@ public class HandRaterFlush extends HandRater {
 
         for (Integer numSuits : suits.values()) {
             if (numSuits >= 5) {
-                return 1;
+                return HandRater.FLUSH;
             }
         }
 
