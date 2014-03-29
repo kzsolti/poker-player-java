@@ -9,11 +9,27 @@ public class RateHand {
 
 
 
-    public static int rate(Hand ourHand, Hand communityHand) {
+    public static float rateHand(Hand hand) {
         return 1;
     }
 
     public static Rating rate(List<Card> ourCards, List<Card> communityCards) {
-        return new Rating(1, 1);
+        Hand ourHand = new Hand();
+        ourHand.addCards(ourCards);
+
+        Hand communityHand = new Hand();
+        communityHand.addCards(communityCards);
+
+        Hand fullHand = new Hand();
+        fullHand.addCards(ourCards);
+        fullHand.addCards(communityCards);
+
+        float ourRate = rateHand(ourHand);
+        float communityRate = rateHand(communityHand);
+        float fullRate = rateHand(fullHand);
+
+
+
+        return new Rating(fullRate/communityRate,   ourRate / communityRate);
     }
 }
