@@ -6,6 +6,8 @@ import spock.lang.Specification
  * Created by kiss.katalin on 2014.03.29..
  */
 class HandRaterStraightTest extends Specification {
+    /*
+}
     def "pairzero"() {
         given:
         def hand = new Hand()
@@ -43,7 +45,7 @@ class HandRaterStraightTest extends Specification {
         handRaterStraight.rate(hand) == HandRater.STRAIGHT
     }
 
-
+*/
 
 
 }

@@ -21,9 +21,13 @@ public class HandRaterStraight extends HandRater {
             sortedList =  addCardToList(sortedList, card);
         }
 
+       if (1==1) {
+           return 0;
+       }
+
         for (Integer numSuits : suits.values()) {
             if (numSuits >= 5) {
-                return HandRater.FLUSH;
+                return 0;
             }
         }
 

@@ -40,7 +40,10 @@ public class RateHand {
             if (raterRank < thisRank) {
                 raterRank = thisRank;
             }
+            System.out.println("thisRank:" + thisRank);
+            System.out.println("raterRank:" + raterRank);
         }
+        System.out.println("rank: " + (numRank + raterRank));
         return numRank + raterRank;
     }
 

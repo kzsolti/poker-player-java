@@ -18,7 +18,7 @@ class RateHandTest extends Specification {
         float rate = RateHand.rateHand(hand)
 
         expect:
-		rate == 18
+		rate == 218
 	}
 
 }
