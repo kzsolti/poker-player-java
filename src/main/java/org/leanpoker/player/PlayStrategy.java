@@ -14,8 +14,14 @@ public class PlayStrategy {
     }
 
     private static StrategyDecision ruleDefault(Hand hand) {
-        if (Math.random() < 0.05) {
+
+        double randomDecision = Math.random();
+        if (randomDecision < 0.05) {
             return StrategyDecision.FOLD;
+        } else if (randomDecision < 0.5) {
+            return StrategyDecision.RAISE_SMALL;
+        } else if (randomDecision < 0.7) {
+            return StrategyDecision.RAISE_BIG;
         } else {
             return StrategyDecision.CALL_BET;
         }
