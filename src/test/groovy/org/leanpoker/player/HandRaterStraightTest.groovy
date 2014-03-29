@@ -6,7 +6,7 @@ import spock.lang.Specification
  * Created by kiss.katalin on 2014.03.29..
  */
 class HandRaterStraightTest extends Specification {
-    /*def "pairzero"() {
+    def "pairzero"() {
         given:
         def hand = new Hand()
         hand.addCard(new Card('5', 'diamonds'))
@@ -40,6 +40,10 @@ class HandRaterStraightTest extends Specification {
         def handRaterStraight = new HandRaterStraight()
 
         expect:
-        handRaterStraight.rate(hand) > 0
-    }*/
+        handRaterStraight.rate(hand) == HandRater.STRAIGHT
+    }
+
+
+
+
 }
