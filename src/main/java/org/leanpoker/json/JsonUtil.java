@@ -5,7 +5,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.leanpoker.player.Card;
@@ -17,15 +16,17 @@ import org.leanpoker.player.Player;
 public class JsonUtil {
 
 	public int getSmallBlind(JsonElement gameState) {
-		return getChildElement(gameState, "small_blind").getAsInt();
+		return getInt(gameState, "small_blind");
+	}
+
+	public int getCurrentBuyIn(JsonElement gameState) {
+		return getInt(gameState, "current_buy_in");
 	}
 
 	public JsonObject getSelf(JsonElement gameState) {
 		JsonArray players = getChildElement(gameState, "players").getAsJsonArray();
-		Iterator<JsonElement> iterator = players.iterator();
-		while (iterator.hasNext()) {
-			JsonElement player = iterator.next();
-			if (Player.VERSION.equals(getChildElement(player, "version").getAsString())) {
+		for (JsonElement player : players) {
+			if (Player.VERSION.equals(getString(player, "version"))) {
 				return player.getAsJsonObject();
 			}
 		}
@@ -36,9 +37,7 @@ public class JsonUtil {
 		List<Card> cards = new ArrayList<>();
 		JsonObject self = getSelf(gameState);
 		JsonArray holeCards = getChildElement(self, "hole_cards").getAsJsonArray();
-		Iterator<JsonElement> iterator = holeCards.iterator();
-		while (iterator.hasNext()) {
-			JsonElement jsonCard = iterator.next();
+		for (JsonElement jsonCard : holeCards) {
 			cards.add(new Card(getString(jsonCard, "rank"), getString(jsonCard, "suit")));
 		}
 		return cards;
@@ -50,5 +49,9 @@ public class JsonUtil {
 
 	private String getString(JsonElement jsonElement, String key) {
 		return getChildElement(jsonElement, key).getAsString();
+	}
+
+	private int getInt(JsonElement jsonElement, String key) {
+		return getChildElement(jsonElement, key).getAsInt();
 	}
 }

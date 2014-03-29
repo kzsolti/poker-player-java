@@ -22,6 +22,11 @@ class JsonUtilTest extends Specification {
 		jsonUtil.getSmallBlind(jsonElement) == 10
 	}
 
+	def "get current buy in test"() {
+		expect:
+		jsonUtil.getCurrentBuyIn(jsonElement) == 20
+	}
+
 	def "get our stats"() {
 		expect:
 		jsonUtil.getSelf(jsonElement) != null
@@ -30,6 +35,11 @@ class JsonUtilTest extends Specification {
 	def "get our cards"() {
 		expect:
 		jsonUtil.getOurCards(jsonElement).size() == 2
+	}
+
+	def "our card's contents"() {
+		given:
+		jsonUtil.getOurCards(jsonElement)
 	}
 
 }
