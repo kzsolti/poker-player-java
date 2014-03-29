@@ -11,9 +11,10 @@ class JsonUtilTest extends Specification {
 	def "get call amount test"() {
 		given:
 		def util = new JsonUtil()
-		def jsonElement = new JsonParser().parse('{"call": "10"}');
+		def jsonFile = new File('src/main/resources/json_test.json')
+		def jsonElement = new JsonParser().parse(jsonFile.text);
 
 		expect:
-		util.getCallAmount(jsonElement) == 10
+		util.getSmallBlind(jsonElement) == 10
 	}
 }
