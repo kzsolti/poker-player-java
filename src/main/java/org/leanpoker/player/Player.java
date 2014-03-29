@@ -11,7 +11,7 @@ public class Player {
     public static int betRequest(JsonElement request) {
 		JsonUtil jsonUtil = new JsonUtil();
 		try {
-			if (Math.random() < 0.1) {
+			if (Math.random() < 0.05) {
 				return 0;
 			} else {
 				return jsonUtil.getSmallBlind(request);
