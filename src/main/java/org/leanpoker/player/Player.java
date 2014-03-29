@@ -10,12 +10,21 @@ public class Player {
 
     public static int betRequest(JsonElement request) {
 		JsonUtil jsonUtil = new JsonUtil(request);
+        Hand currentHand = new Hand();
+        currentHand.addCards(jsonUtil.getOurCards());
+        currentHand.addCards(jsonUtil.getCommunityCards());
+
 		try {
-			if (Math.random() < 0.05) {
-				return 0;
-			} else {
-				return jsonUtil.getCurrentBuyIn() - jsonUtil.getOurBet();
-			}
+            switch (PlayStrategy.play(currentHand)) {
+                case 0:
+                    return 0;
+                case -1:
+                    return jsonUtil.getCurrentBuyIn() - jsonUtil.getOurBet();
+
+                default:
+                    return jsonUtil.getCurrentBuyIn() - jsonUtil.getOurBet();
+            }
+
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 			e.printStackTrace();
