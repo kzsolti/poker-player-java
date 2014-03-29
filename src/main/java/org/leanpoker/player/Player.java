@@ -6,7 +6,7 @@ import org.leanpoker.json.JsonUtil;
 
 public class Player {
 
-    static final String VERSION = "Korda Gyuri Bacsi pokerrobotja";
+    public static final String VERSION = "Korda Gyuri Bacsi pokerrobotja";
 
     public static int betRequest(JsonElement request) {
 		JsonUtil jsonUtil = new JsonUtil();

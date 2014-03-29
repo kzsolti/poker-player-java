@@ -8,13 +8,23 @@ import spock.lang.Specification
  */
 class JsonUtilTest extends Specification {
 
-	def "get call amount test"() {
-		given:
-		def util = new JsonUtil()
-		def jsonFile = new File('src/main/resources/json_test.json')
-		def jsonElement = new JsonParser().parse(jsonFile.text);
+	def jsonUtil
+	def jsonElement
 
-		expect:
-		util.getSmallBlind(jsonElement) == 10
+	def setup() {
+		jsonUtil = new JsonUtil()
+		def jsonFile = new File('src/main/resources/json_test.json')
+		jsonElement = new JsonParser().parse(jsonFile.text);
 	}
+
+	def "get call amount test"() {
+		expect:
+		jsonUtil.getSmallBlind(jsonElement) == 10
+	}
+
+	def "get our stats"() {
+		expect:
+		jsonUtil.getSelf(jsonElement) != null
+	}
+
 }
