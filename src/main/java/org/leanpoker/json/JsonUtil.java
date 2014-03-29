@@ -4,8 +4,11 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
+import org.leanpoker.player.Card;
 import org.leanpoker.player.Player;
 
 /**
@@ -29,7 +32,23 @@ public class JsonUtil {
 		return null;
 	}
 
+	public List<Card> getOurCards(JsonElement gameState) {
+		List<Card> cards = new ArrayList<>();
+		JsonObject self = getSelf(gameState);
+		JsonArray holeCards = getChildElement(self, "hole_cards").getAsJsonArray();
+		Iterator<JsonElement> iterator = holeCards.iterator();
+		while (iterator.hasNext()) {
+			JsonElement jsonCard = iterator.next();
+			cards.add(new Card(getString(jsonCard, "rank"), getString(jsonCard, "suit")));
+		}
+		return cards;
+	}
+
 	private JsonElement getChildElement(JsonElement jsonElement, String key) {
 		return jsonElement.getAsJsonObject().get(key);
+	}
+
+	private String getString(JsonElement jsonElement, String key) {
+		return getChildElement(jsonElement, key).getAsString();
 	}
 }

@@ -27,4 +27,9 @@ class JsonUtilTest extends Specification {
 		jsonUtil.getSelf(jsonElement) != null
 	}
 
+	def "get our cards"() {
+		expect:
+		jsonUtil.getOurCards(jsonElement).size() == 2
+	}
+
 }
