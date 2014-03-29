@@ -8,14 +8,17 @@ import spock.lang.Specification
  */
 class RateHandTest extends Specification {
 
-	def "ratePair"() {
+	def "rateHand"() {
         given:
         Card card1 = new Card("9", "diamonds");
         Card card2 = new Card("9", "spades");
         Hand hand = new Hand()
+        hand.addCard(card1)
+        hand.addCard(card2)
+        int rate = RateHand.rateHand(hand)
 
         expect:
-		hand != null
+		true
 	}
 
 }

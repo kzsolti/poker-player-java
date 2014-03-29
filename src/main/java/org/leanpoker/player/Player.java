@@ -13,6 +13,7 @@ public class Player {
         Hand currentHand = new Hand();
         currentHand.addCards(jsonUtil.getOurCards());
         currentHand.addCards(jsonUtil.getCommunityCards());
+        Rating rating = RateHand.rate(jsonUtil.getOurCards(), jsonUtil.getCommunityCards());
 
 		try {
             switch (PlayStrategy.play(currentHand)) {
