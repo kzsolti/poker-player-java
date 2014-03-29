@@ -16,12 +16,8 @@ public class HandRaterFlush extends HandRater {
         }
         Map<String, Integer> suits = new HashMap<>();
         for (Card card : cards) {
-            String suit = card.getSuit();
-            Integer num = suits.get(suit);
-            if (num == null) {
-                suits.put(suit, new Integer(1));
-            }
-        }
+            addSuiteToMap(suits, card.getSuit() );
+                     }
 
         for (Integer numSuits : suits.values()) {
             if (numSuits >= 5) {
@@ -30,5 +26,18 @@ public class HandRaterFlush extends HandRater {
         }
 
         return 0;
+    }
+
+    public void addSuiteToMap(Map<String, Integer> suits, String suit) {
+        Integer num = suits.get(suit);
+        if (num == null) {
+            suits.put(suit, new Integer(1));
+        } else {
+            System.out.println(num);
+            num = new Integer(num.intValue() + 1);
+            System.out.println(num);
+            suits.put(suit, num);
+        }
+
     }
 }
