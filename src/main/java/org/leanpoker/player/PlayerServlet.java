@@ -36,6 +36,10 @@ public class PlayerServlet extends HttpServlet {
     }
 
     private void initRaters() {
-
+        RateHand.registerRater( new HandRaterFlush());
+        RateHand.registerRater( new HandRaterStraight());
+        RateHand.registerRater( new HandRaterOnePair());
+        RateHand.registerRater( new HandRaterThreeOfKind());
+        RateHand.registerRater( new HandRaterTwoPair());
     }
 }

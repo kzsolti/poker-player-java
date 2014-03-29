@@ -10,9 +10,6 @@ public class HandRaterStraight extends HandRater {
     @Override
     public float rate(Hand hand) {
 
-        List<Integer> bela = new ArrayList<Integer>();
-
-
-        return 0;
+        return HandRater.STRAIGHT;
     }
 }
