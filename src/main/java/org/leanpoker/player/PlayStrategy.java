@@ -9,15 +9,15 @@ public class PlayStrategy {
 
     }
 
-    public static int play(Hand hand) {
+    public static StrategyDecision play(Hand hand) {
         return ruleDefault(hand);
     }
 
-    private static int ruleDefault(Hand hand) {
+    private static StrategyDecision ruleDefault(Hand hand) {
         if (Math.random() < 0.05) {
-            return 0;
+            return StrategyDecision.FOLD;
         } else {
-            return -1;
+            return StrategyDecision.CALL_BET;
         }
 
     }
