@@ -11,8 +11,21 @@ class HandTest extends Specification {
 	def "createHand"() {
 		given:
 		def jsonElement = new JsonParser().parse('{"key1": "value1", "key2": "value2"}');
+        Card card = new Card("8", "diamonds")
+        Hand hand = new Hand()
 
 		expect:
-		Hand.addCard(jsonElement) == 0
+		hand != null;
 	}
+
+    def "addCardToHand"() {
+        given:
+        def jsonElement = new JsonParser().parse('{"key1": "value1", "key2": "value2"}');
+        Card card = new Card("8", "diamonds")
+        Hand hand = new Hand()
+
+        expect:
+        Hand.addCard(card) != null
+    }
+
 }
