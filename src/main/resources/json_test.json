@@ -1,0 +1,44 @@
+{"players": [
+	{
+		"name": "Albert",
+		"stack": 1060,
+		"status": "active",
+		"bet": 20,
+		"version": "Default random player",
+		"id": 0
+	},
+	{
+		"name": "Bob",
+		"stack": 950,
+		"status": "active",
+		"bet": 20,
+		"version": "Default random player",
+		"id": 1
+	},
+	{
+		"name": "Chuck",
+		"stack": 950,
+		"status": "active",
+		"bet": 20,
+		"version": "Default random player",
+		"id": 2
+	},
+	{
+		"name": "REST",
+		"stack": 970,
+		"status": "active",
+		"bet": 10,
+		"hole_cards": [
+			{
+				"rank": "9",
+				"suit": "diamonds"
+			},
+			{
+				"rank": "5",
+				"suit": "hearts"
+			}
+		],
+		"version": "Korda Gyuri Bacsi pokerrobotja",
+		"id": 3
+	}
+], "small_blind": 10, "orbits": 0, "dealer": 2, "community_cards": [], "current_buy_in": 20, "pot": 70, "in_action": 3, "minimum_raise": 10}

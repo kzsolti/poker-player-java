@@ -7,7 +7,7 @@ import com.google.gson.JsonElement;
  */
 public class JsonUtil {
 
-	public int getCallAmount(JsonElement gameState) {
-		return gameState.getAsJsonObject().get("call").getAsInt();
+	public int getSmallBlind(JsonElement gameState) {
+		return gameState.getAsJsonObject().get("small_blind").getAsInt();
 	}
 }
