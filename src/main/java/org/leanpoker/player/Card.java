@@ -73,4 +73,12 @@ public class Card {
         result = 31 * result + (suit != null ? suit.hashCode() : 0);
         return result;
     }
+
+	public boolean isEqualRank(Card other) {
+		return this.rank.equals(other.rank);
+	}
+
+	public boolean isEqualSuit(Card other) {
+		return this.suit.equals(other.suit);
+	}
 }
