@@ -69,4 +69,9 @@ class JsonUtilTest extends Specification {
 		jsonUtil.getOurBet() == 10
 	}
 
+	def "get minimum raise"() {
+		expect:
+		jsonUtil.getMinimumRaise() == 10
+	}
+
 }

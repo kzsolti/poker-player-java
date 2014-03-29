@@ -33,6 +33,10 @@ public class JsonUtil {
 		return getInt(getSelf(), "bet");
 	}
 
+	public int getMinimumRaise() {
+		return getInt(gameState, "minimum_raise");
+	}
+
 	public JsonObject getSelf() {
 		JsonArray players = getChildElement(gameState, "players").getAsJsonArray();
 		for (JsonElement player : players) {
