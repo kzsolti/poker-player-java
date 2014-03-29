@@ -34,4 +34,8 @@ public class PlayerServlet extends HttpServlet {
             resp.getWriter().print(Player.VERSION);
         }
     }
+
+    private void initRaters() {
+
+    }
 }

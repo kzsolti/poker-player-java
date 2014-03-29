@@ -12,6 +12,12 @@ public class RateHand {
 
     public static float rateHand(Hand hand) {
         List<Card> cards = hand.getCards();
+
+        if (hand == null || hand.getCards().isEmpty()) {
+            return 1;
+        }
+
+
         int numRank = 0;
         for (Card card : cards) {
               numRank += card.getRankInt();
