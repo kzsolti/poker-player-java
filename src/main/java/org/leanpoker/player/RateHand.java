@@ -10,6 +10,14 @@ public class RateHand {
 
     private static List<HandRater> raters = new LinkedList<HandRater>();
 
+	static {
+		raters.add( new HandRaterFlush());
+		raters.add( new HandRaterStraight());
+		raters.add( new HandRaterOnePair());
+		raters.add( new HandRaterThreeOfKind());
+		raters.add( new HandRaterTwoPair());
+	}
+
     public static float rateHand(Hand hand) {
         List<Card> cards = hand.getCards();
 
@@ -54,7 +62,4 @@ public class RateHand {
         return new Rating(fullRate/communityRate,   ourRate / communityRate);
     }
 
-    public static void registerRater(HandRater handRater) {
-        raters.add(handRater);
-    }
 }
