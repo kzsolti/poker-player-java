@@ -1,6 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: 'tomcat'
+apply plugin: 'groovy'
 
 sourceCompatibility = 1.7
 version = '1.0'
@@ -30,6 +31,8 @@ buildscript {
 
 dependencies {
     testCompile 'junit:junit:4.11'
+	testCompile "org.codehaus.groovy:groovy-all:1.8.6"
+	testCompile "org.spockframework:spock-core:0.7-groovy-1.8"
     compile 'com.google.code.gson:gson:2.2.4'
     def tomcatVersion = '7.0.11'
 
