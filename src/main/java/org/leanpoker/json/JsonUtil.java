@@ -37,6 +37,10 @@ public class JsonUtil {
 		return getInt(gameState, "minimum_raise");
 	}
 
+	public int getOurStack() {
+		return getInt(getSelf(), "stack");
+	}
+
 	public JsonObject getSelf() {
 		JsonArray players = getChildElement(gameState, "players").getAsJsonArray();
 		for (JsonElement player : players) {

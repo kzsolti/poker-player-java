@@ -27,7 +27,7 @@ public class Player {
 				case RAISE_BIG:
 					return getMinimumBetAmount(jsonUtil) + jsonUtil.getMinimumRaise() * 3;
 				case ALL_IN:
-					return 0;
+					return jsonUtil.getOurStack();
                 default:
                     return getMinimumBetAmount(jsonUtil);
             }

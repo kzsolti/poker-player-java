@@ -74,4 +74,9 @@ class JsonUtilTest extends Specification {
 		jsonUtil.getMinimumRaise() == 10
 	}
 
+	def "get our stack"() {
+		expect:
+		jsonUtil.getOurStack() == 970
+	}
+
 }
