@@ -14,7 +14,7 @@ public class Player {
 			if (Math.random() < 0.05) {
 				return 0;
 			} else {
-				return jsonUtil.getCurrentBuyIn(request);
+				return jsonUtil.getCurrentBuyIn(request) - jsonUtil.getOurBet(request);
 			}
 		} catch (Exception e) {
 			System.err.println(e.getMessage());

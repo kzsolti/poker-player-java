@@ -23,6 +23,10 @@ public class JsonUtil {
 		return getInt(gameState, "current_buy_in");
 	}
 
+	public int getOurBet(JsonElement jsonElement) {
+		return getInt(getSelf(jsonElement), "bet");
+	}
+
 	public JsonObject getSelf(JsonElement gameState) {
 		JsonArray players = getChildElement(gameState, "players").getAsJsonArray();
 		for (JsonElement player : players) {

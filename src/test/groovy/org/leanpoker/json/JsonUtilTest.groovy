@@ -65,4 +65,9 @@ class JsonUtilTest extends Specification {
 		'K'  | 'spades'
 	}
 
+	def "get our bet"() {
+		expect:
+		jsonUtil.getOurBet(jsonElement) == 10
+	}
+
 }
