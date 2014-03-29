@@ -17,6 +17,7 @@ public class RateHand {
 		raters.add(new HandRaterThreeOfKind());
 		raters.add(new HandRaterTwoPair());
 		raters.add(new HandRaterFullHouse());
+		raters.add(new HandRaterFourOfKind());
 	}
 
     public static float rateHand(Hand hand) {
