@@ -13,6 +13,6 @@ public abstract class HandRater {
     public static int FLUSH = 600;
     public static int FULL_HOUSE = 700;
     public static int FOUR_OF_A_KIND = 800;
-    public static int STRAIGHT = 900;
+    public static int STRAIGHT_FLUSH = 900;
     public static int ROYAL_FLUSH = 1000;
 }
