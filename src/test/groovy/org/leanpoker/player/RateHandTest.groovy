@@ -15,10 +15,10 @@ class RateHandTest extends Specification {
         Hand hand = new Hand()
         hand.addCard(card1)
         hand.addCard(card2)
-        int rate = RateHand.rateHand(hand)
+        float rate = RateHand.rateHand(hand)
 
         expect:
-		true
+		rate == 18
 	}
 
 }

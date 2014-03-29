@@ -8,9 +8,13 @@ import java.util.List;
 public class RateHand {
 
 
-
     public static float rateHand(Hand hand) {
-        return 1;
+        List<Card> cards = hand.getCards();
+        int numRank = 0;
+        for (Card card : cards) {
+              numRank += card.getRankInt();
+        }
+        return numRank;
     }
 
     public static Rating rate(List<Card> ourCards, List<Card> communityCards) {
