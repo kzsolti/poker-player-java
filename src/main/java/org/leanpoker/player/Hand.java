@@ -15,6 +15,14 @@ public class Hand {
         return this;
     }
 
+
+    public Hand addCards(List<Card> cards) {
+        for (Card card : cards) {
+            addCard(card);
+        }
+        return this;
+    }
+
     public List<Card> getCards() {
         return cards;
     }

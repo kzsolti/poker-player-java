@@ -10,17 +10,38 @@ public class Player {
 
     public static int betRequest(JsonElement request) {
 		JsonUtil jsonUtil = new JsonUtil(request);
+        Hand currentHand = new Hand();
+        currentHand.addCards(jsonUtil.getOurCards());
+        currentHand.addCards(jsonUtil.getCommunityCards());
+        Rating rating = RateHand.rate(jsonUtil.getOurCards(), jsonUtil.getCommunityCards());
+
 		try {
-			if (Math.random() < 0.05) {
-				return 0;
-			} else {
-				return jsonUtil.getCurrentBuyIn() - jsonUtil.getOurBet();
-			}
+            switch (PlayStrategy.play(currentHand)) {
+                case FOLD:
+                    return 0;
+                case CALL_BET:
+                    return getMinimumBetAmount(jsonUtil);
+				case RAISE_SMALL:
+					return getMinimumBetAmount(jsonUtil) + jsonUtil.getMinimumRaise();
+				case RAISE:
+					return getMinimumBetAmount(jsonUtil) + jsonUtil.getMinimumRaise() * 2;
+				case RAISE_BIG:
+					return getMinimumBetAmount(jsonUtil) + jsonUtil.getMinimumRaise() * 3;
+				case ALL_IN:
+					return jsonUtil.getOurStack();
+                default:
+                    return getMinimumBetAmount(jsonUtil);
+            }
+
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 			e.printStackTrace();
 			return 0;
 		}
+	}
+
+	private static int getMinimumBetAmount(JsonUtil jsonUtil) {
+		return jsonUtil.getCurrentBuyIn() - jsonUtil.getOurBet();
 	}
 
     public static void showdown(JsonElement game) {
