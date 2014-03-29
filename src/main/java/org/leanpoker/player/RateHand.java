@@ -7,7 +7,7 @@ public class RateHand {
 
 
 
-    public static int rate(Hand ourHand) {
+    public static int rate(Hand ourHand, Hand communityHand) {
         return 0;
     }
 }
